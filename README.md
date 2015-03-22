@@ -94,10 +94,38 @@ conn.message({
 conn.on('message', function(msg) { console.log(msg); });
 ```
 
+### Errors
+Early js->dbus error support is included
+
+Error is expected to be in forms of { name: "..", message: ".." }
+
+Sample:
+```
+var yourObj = {
+    someMethod: function(){
+        throw { name : "dbus.some.error", message : "Oops" };
+    }
+}
+```
+
 ### Async
+When "reply later" is wanted, please code in following fasion:
 
-Exported Objects should impl method using (arg, cb) model
+```
+var yourObj = {
+    someMethod: function(){
+        //this method will be called immediately by bus
+    	return function(cb){ 
+    	    //cb is expected to be function(err, result)
+    	    //err should be in forms of {name:"", message:""}
+    		setTimeout(function(){
+    			cb(undefined, { someVal: 3 });
+    		}, 3000);
+    	};
+    }
+};
 
+```
 
 ### Links
    - http://cgit.freedesktop.org/dbus - freedesktop reference C library
