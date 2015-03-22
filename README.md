@@ -97,10 +97,13 @@ conn.on('message', function(msg) { console.log(msg); });
 ### Errors
 Early js->dbus error support is included
 
-Error is expected to be in forms of { name: "..", message: ".." }
+Error is expected to be in forms of 
+```js 
+{ name: "..", message: ".." }
+```
 
 Sample:
-```
+```js
 var yourObj = {
     someMethod: function(){
         throw { name : "dbus.some.error", message : "Oops" };
@@ -111,7 +114,7 @@ var yourObj = {
 ### Async
 When "reply later" is wanted, please code in following fasion:
 
-```
+```js
 var yourObj = {
     someMethod: function(){
         //this method will be called immediately by bus
