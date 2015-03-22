@@ -1,6 +1,7 @@
-node-dbus
+node-dbus-(async)
 ===========
 D-bus protocol client and server for node.js
+With Async patches - 
 
 [![Build Status](https://secure.travis-ci.org/sidorares/node-dbus.png)](http://travis-ci.org/sidorares/node-dbus)
 
@@ -92,6 +93,10 @@ conn.message({
 });
 conn.on('message', function(msg) { console.log(msg); });
 ```
+
+### Async
+
+Exported Objects should impl method using (arg, cb) model
 
 
 ### Links
